@@ -52,12 +52,13 @@ def find_user(user_email: str) -> dict:
     url_extension = f"search.json?query={user_email}"
     url = f"{base_url}{url_extension}"
     response = get_zendesk(url).json()
-    if response['count'] == 1:
-        found_user = response
+    if user_email:
+        if response['count'] == 1:
+            found_user = response
 
+        else:
+            found_user = {'found_user': False}
     else:
         found_user = {'found_user': False}
 
     return found_user
-
-
