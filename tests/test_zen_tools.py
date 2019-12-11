@@ -25,5 +25,5 @@ def test_find_user():
     assert find_me['count'] == 1
 
     not_me = zen_tools.find_user("not_an_email")
-    assert isinstance(not_me, dict)
-    assert not not_me["found_user"]
+    assert isinstance(not_me, bool)
+    assert not not_me

@@ -1,6 +1,6 @@
 import os
 from pprint import pprint
-
+from typing import Union
 import requests
 from requests.auth import HTTPBasicAuth
 
@@ -42,7 +42,7 @@ def get_all_users() -> list:
     return all_user_data
 
 
-def find_user(user_email: str) -> dict:
+def find_user(user_email: str) -> Union[dict, bool]:
     """
     Search for user by email.
 
@@ -57,8 +57,8 @@ def find_user(user_email: str) -> dict:
             found_user = response
 
         else:
-            found_user = {'user_not_found': False}
+            found_user = False
     else:
-        found_user = {'user_not_found': False}
+        found_user = False
 
     return found_user
