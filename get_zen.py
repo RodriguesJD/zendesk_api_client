@@ -9,10 +9,13 @@ username = os.environ["SYS_ADMIN_USERNAME"]
 key = os.environ["SYS_ADMIN_KEY"]
 
 
-def get_zendesk(url_extension):
-    response = requests.get(url=f"{base_url}{url_extension}",
-                     auth=HTTPBasicAuth(username, key),
-                     headers={'Accept': 'application/json'})
+def get_zendesk(url_extension, pagination=False):
+    if pagination:
+        pass
+    else:
+        response = requests.get(url=f"{base_url}{url_extension}",
+                         auth=HTTPBasicAuth(username, key),
+                         headers={'Accept': 'application/json'})
 
     return response
 
