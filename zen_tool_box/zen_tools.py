@@ -42,3 +42,22 @@ def get_all_users() -> list:
     return all_user_data
 
 
+def find_user(user_email: str) -> dict:
+    """
+    Search for user by email.
+
+    :param user_email: Users email address.
+    :return user_data: Users data in a dictionary.
+    """
+    url_extension = f"search.json?query={user_email}"
+    url = f"{base_url}{url_extension}"
+    response = get_zendesk(url).json()
+    if response['count'] == 1:
+        found_user = response
+
+    else:
+        found_user = {'found_user': False}
+
+    return found_user
+
+
