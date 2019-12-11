@@ -64,5 +64,3 @@ def find_user(user_email: str) -> Union[dict, bool]:
     return found_user
 
 
-
-print(find_user("jeremy.rodrigues@ext.li.me"))
