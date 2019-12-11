@@ -22,7 +22,7 @@ def test_get_all_users():
 def test_find_user():
     find_me = zen_tools.find_user(me)
     assert isinstance(find_me, dict)
-    assert find_me['count'] == 1
+    assert find_me['result_type'] == 'user'
 
     not_me = zen_tools.find_user("not_an_email")
     assert isinstance(not_me, bool)

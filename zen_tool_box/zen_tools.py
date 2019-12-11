@@ -49,16 +49,20 @@ def find_user(user_email: str) -> Union[dict, bool]:
     :param user_email: Users email address.
     :return user_data: Users data in a dictionary.
     """
+    found_user = False
     url_extension = f"search.json?query={user_email}"
     url = f"{base_url}{url_extension}"
-    response = get_zendesk(url).json()
     if user_email:
-        if response['count'] == 1:
-            found_user = response
-
-        else:
-            found_user = False
+        response = get_zendesk(url).json()
+        if response['count'] != 0:
+            for result in response['results']:
+                if result['result_type'] == 'user' and user_email == result['email']:
+                    found_user = result
     else:
-        found_user = False
+        pass
 
     return found_user
+
+
+
+print(find_user("jeremy.rodrigues@ext.li.me"))
