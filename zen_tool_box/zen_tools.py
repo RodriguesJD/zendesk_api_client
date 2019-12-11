@@ -57,8 +57,8 @@ def find_user(user_email: str) -> dict:
             found_user = response
 
         else:
-            found_user = {'found_user': False}
+            found_user = {'user_not_found': False}
     else:
-        found_user = {'found_user': False}
+        found_user = {'user_not_found': False}
 
     return found_user
