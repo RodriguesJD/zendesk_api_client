@@ -1,6 +1,6 @@
 import os
 
-from zen_tool_box import zen_tools
+from zendesk_api_client.zen_tool_box import zen_tools
 
 base_url = os.environ["ZENDESK_URL"]
 me = os.environ["WORK_EMAIL"]
